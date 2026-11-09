@@ -1,0 +1,17 @@
+body { font-family: sans-serif; max-width: 500px; margin: 20px auto; padding: 20px; }
+label { display: block; margin-bottom: 5px; }
+input[type="text"], input[type="email"] { width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box; }
+input[type="submit"] { background-color: #4CAF50; color: white; padding: 10px 15px; border: none; cursor: pointer; }
+
+.estiloBotaoLink:link, estiloBotaoLink:visited {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.estiloBotaoLink:hover, estiloBotaoLink:active {
+    background-color: green;
+}

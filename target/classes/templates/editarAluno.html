@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Aluno</title>
+    <link th:href="@{/css/estiloPaginaForm.css}" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="container">
+        <h2>Edição de Aluno</h2>
+        <form th:action="@{/alunos/atualizar}" th:object="${aluno}" method="post">
+
+            <div class="divMensagemErro" th:if="${mensagemErro != null}">
+                <span th:text="${mensagemErro}"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="matricula">Matrícula (não pode ser alterada):</label>
+                <input type="text" th:field="*{matricula}" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" th:field="*{nome}">
+            </div>
+
+            <div class="form-group">
+                <label for="idade">Idade:</label>
+                <input type="number" min="1" th:field="*{idade}">
+            </div>
+
+            <div class="form-group">
+                <label for="rg">RG:</label>
+                <input type="text" th:field="*{rg}">
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="text" th:field="*{email}">
+            </div>
+
+            <div class="form-group">
+                <label>Turmas (selecione ao menos uma):</label>
+                <div class="checkbox-group">
+                    <label th:each="t : ${turmas}">
+                        <input type="checkbox" th:field="*{idsTurmas}" th:value="${t.idTurma}">
+                        <span th:text="|Turma ${t.idTurma} - ${t.serie} (${t.turno})|"></span>
+                    </label>
+                </div>
+                <p class="aviso" th:if="${#lists.isEmpty(turmas)}">
+                    Nenhuma turma cadastrada. <a th:href="@{/turmas/novo}">Cadastre uma turma</a>
+                    antes de cadastrar alunos.
+                </p>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Enviar">
+
+                <a href="/alunos">
+                    <input type="button" value="Cancelar">
+                </a>
+            </div>
+
+        </form>
+    </div>
+
+</body>
+</html>

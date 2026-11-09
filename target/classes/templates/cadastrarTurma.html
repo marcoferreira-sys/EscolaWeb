@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Turma</title>
+    <link th:href="@{/css/estiloPaginaForm.css}" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="container">
+        <h2>Cadastro de Turma</h2>
+        <form th:action="@{/turmas}" th:object="${turma}" method="post">
+
+            <div class="divMensagemErro" th:if="${mensagemErro != null}">
+                <span th:text="${mensagemErro}"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="serie">Série:</label>
+                <input type="text" th:field="*{serie}">
+            </div>
+
+            <div class="form-group">
+                <label for="turno">Turno:</label>
+                <select th:field="*{turno}">
+                    <option value="">Selecione o turno</option>
+                    <option th:each="t : ${turnos}" th:value="${t}" th:text="${t}"></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Salas (selecione ao menos uma):</label>
+                <div class="checkbox-group">
+                    <label th:each="s : ${salas}">
+                        <input type="checkbox" th:field="*{idsSalas}" th:value="${s.idSala}">
+                        <span th:text="|Sala ${s.numeroSala} - ${s.andarSala}º andar|"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Professores (selecione ao menos um):</label>
+                <div class="checkbox-group">
+                    <label th:each="p : ${professores}">
+                        <input type="checkbox" th:field="*{idsProfessores}" th:value="${p.codigoProfessor}">
+                        <span th:text="${p.nome}"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Matérias (opcional):</label>
+                <div class="checkbox-group">
+                    <label th:each="m : ${materias}">
+                        <input type="checkbox" th:field="*{idsMaterias}" th:value="${m.idMateria}">
+                        <span th:text="${m.nomeMateria}"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Enviar">
+
+                <a href="/turmas">
+                    <input type="button" value="Cancelar">
+                </a>
+            </div>
+
+        </form>
+    </div>
+
+</body>
+</html>

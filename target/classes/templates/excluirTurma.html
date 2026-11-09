@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excluir Turma</title>
+    <link th:href="@{/css/estiloPaginaForm.css}" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="container">
+        <h2>Exclusão de Turma</h2>
+        <form th:action="@{/turmas/excluir}" th:object="${turma}" method="post">
+            <input type="hidden" th:field="*{idTurma}" />
+
+            <div class="form-group">
+                <label>Série:</label>
+                <span th:text="*{serie}"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Turno:</label>
+                <span th:text="*{turno}"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Excluir">
+
+                <a href="/turmas">
+                    <input type="button" value="Cancelar">
+                </a>
+            </div>
+
+        </form>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem de Alunos</title>
+    <link th:href="@{/css/estiloPaginaListagem.css}" rel="stylesheet" />
+</head>
+<body>
+    <a href="/" class="estiloBotaoLink">Voltar para Página Inicial</a>
+
+    <br /><br />
+
+    <div class="divMensagemSucesso" th:unless="${#strings.isEmpty(mensagemSucesso)}">
+        <span th:text="${mensagemSucesso}" />
+    </div>
+
+    <div class="divMensagemErro" th:unless="${#strings.isEmpty(mensagemErro)}">
+        <span th:text="${mensagemErro}" />
+    </div>
+
+    <h2>Listagem de Alunos</h2>
+
+    <table class="tabela-listagem">
+        <thead>
+            <tr>
+                <th>Matrícula</th>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>RG</th>
+                <th>E-mail</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr th:each="aluno : ${alunos}">
+                    <td th:text="${aluno.matricula}"></td>
+                    <td th:text="${aluno.nome}"></td>
+                    <td th:text="${aluno.idade}"></td>
+                    <td th:text="${aluno.rg}"></td>
+                    <td th:text="${aluno.email}"></td>
+                    <td>
+                        <a th:href="@{'/alunos/editar/' + ${aluno.matricula}}" class="linkEditar">Editar</a>
+                        &nbsp;
+                        <a th:href="@{'/alunos/excluir/' + ${aluno.matricula}}" class="linkExcluir">Excluir</a>
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+body { font-family: sans-serif; padding: 20px; }
+        
+/* Estilização de links */
+.linkExcluir:link, linkExcluir:visited {
+    background-color: #f44336;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.linkExcluir:hover, linkExcluir:active {
+    background-color: red;
+}
+
+.linkEditar:link, linkEditar:visited {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.linkEditar:hover, linkEditar:active {
+    background-color: green;
+}
+
+/* Estilização da Tabela */
+.tabela-listagem {
+    width: 100%;
+    border-collapse: collapse; /* Remove espaços entre bordas */
+    margin: 25px 0;
+    font-size: 0.9em;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.tabela-listagem thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.tabela-listagem th, 
+.tabela-listagem td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #dddddd;
+}
+
+/* Efeito de linhas alternadas */
+.tabela-listagem tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+/* Destaque na última linha */
+.tabela-listagem tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+/* Efeito hover (passar o mouse) */
+.tabela-listagem tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+.estiloBotaoLink:link, estiloBotaoLink:visited {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.estiloBotaoLink:hover, estiloBotaoLink:active {
+    background-color: green;
+}
+
+.divMensagemSucesso {
+    background-color: #d4edda;
+    color: #155724; padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #c3e6cb;
+    font-family: sans-serif;
+}
+
+.divMensagemErro {
+    background-color: #f8d7da;
+    color: #721c24; 
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #f5c6cb;
+    font-family: sans-serif;
+}

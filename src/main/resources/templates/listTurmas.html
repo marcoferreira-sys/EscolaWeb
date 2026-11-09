@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem de Turmas</title>
+    <link th:href="@{/css/estiloPaginaListagem.css}" rel="stylesheet" />
+</head>
+<body>
+    <a href="/" class="estiloBotaoLink">Voltar para Página Inicial</a>
+
+    <br /><br />
+
+    <div class="divMensagemSucesso" th:unless="${#strings.isEmpty(mensagemSucesso)}">
+        <span th:text="${mensagemSucesso}" />
+    </div>
+
+    <div class="divMensagemErro" th:unless="${#strings.isEmpty(mensagemErro)}">
+        <span th:text="${mensagemErro}" />
+    </div>
+
+    <h2>Listagem de Turmas</h2>
+
+    <table class="tabela-listagem">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Série</th>
+                <th>Turno</th>
+                <th>Salas</th>
+                <th>Professores</th>
+                <th>Matérias</th>
+                <th>Alunos</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr th:each="turma : ${turmas}">
+                    <td th:text="${turma.idTurma}"></td>
+                    <td th:text="${turma.serie}"></td>
+                    <td th:text="${turma.turno}"></td>
+                    <td th:text="${turma.salas}"></td>
+                    <td th:text="${turma.professores}"></td>
+                    <td th:text="${turma.materias}"></td>
+                    <td th:text="${turma.qtdAlunos}"></td>
+                    <td>
+                        <a th:href="@{'/turmas/editar/' + ${turma.idTurma}}" class="linkEditar">Editar</a>
+                        &nbsp;
+                        <a th:href="@{'/turmas/excluir/' + ${turma.idTurma}}" class="linkExcluir">Excluir</a>
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
